@@ -1,0 +1,18 @@
+<!-- This footer should hidden by default and shown when there are todos -->
+<footer class="footer">
+  <!-- This should be `0 items left` by default -->
+  <span class="todo-count"><strong> {{ unfinishedTasks$ | async }} </strong> items left</span>
+  <!-- Remove this if you don't implement routing -->
+  <ul class="filters">
+
+    <li *ngFor="let filter of filters">
+      <a
+        [class.selected]="(selectedFilter$ | async) === filter"
+        (click)="selectFilter(filter)"
+      > {{ filter | titlecase }}</a>
+    </li>
+
+  </ul>
+  <!-- Hidden if no completed items are left ↓ -->
+  <button class="clear-completed" (click)="clearCompleted()">Clear completed</button>
+</footer>

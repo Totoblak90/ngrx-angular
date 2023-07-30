@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="col text-center">
+    <h1>Contador</h1>
+    <h2>{{ contador$ | async }}</h2>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col text-center">
+    <button class="btn btn-primary m-1" (click)="incrementar()">Incrementar</button>
+    <button class="btn btn-info" (click)="decrementar()">Decrementar</button>
+  </div>
+</div>
+
+<hr>
+
+<div class="row text-center">
+  <div class="col">
+    <app-hijo></app-hijo>
+  </div>
+</div>
