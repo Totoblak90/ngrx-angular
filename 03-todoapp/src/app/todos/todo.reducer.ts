@@ -7,10 +7,10 @@ export const initialState: Todo[] = [ new Todo('Save the world') ];
 
 export const todoReducer = createReducer(
   initialState,
-  on( createTodo,     ( state, { text } ) => [ ...state, new Todo (text) ] ),
-  on( toggleTodo,     ( state, { id } ) => state.map( todo => todo.id === id ? { ...todo, completed: !todo.completed } : todo ) ),
+  on( createTodo,     ( state, { text } )      => [ ...state, new Todo (text) ] ),
+  on( toggleTodo,     ( state, { id } )        => state.map( todo => todo.id === id ? { ...todo, completed: !todo.completed } : todo ) ),
   on( toggleAll,      ( state, { completed } ) => state.map( todo => ( { ...todo, completed } ) ) ),
-  on( editTodo,       ( state, { id, text } ) => state.map( todo => todo.id === id ? { ...todo, text } : todo ) ),
-  on( deleteTodo,     ( state, { id } ) => state.filter( todo => todo.id !== id ) ),
-  on( clearCompleted, ( state ) => state.filter( todo => !todo.completed ) ),
+  on( editTodo,       ( state, { id, text } )  => state.map( todo => todo.id === id ? { ...todo, text } : todo ) ),
+  on( deleteTodo,     ( state, { id } )        => state.filter( todo => todo.id !== id ) ),
+  on( clearCompleted, ( state )                => state.filter( todo => !todo.completed ) ),
 );
