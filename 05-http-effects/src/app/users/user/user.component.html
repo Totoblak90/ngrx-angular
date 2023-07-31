@@ -1,0 +1,37 @@
+<div *ngIf="!(error$ | async); else errorTemplate">
+
+  <div class="d-flex justify-content-center" *ngIf="(loading$ | async)">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+  <div class="card d-flex flex-row row text-center" *ngIf="!(loading$ | async)">
+    <div class="col-3 d-flex align-items-center">
+      <img [src]="(user$ | async).avatar" class="card-img-top" alt="User Avatar">
+    </div>
+
+    <div class="col">
+
+      <div class="card-header"> </div>
+      <div class="card-body">
+        <h5 class="card-title">{{ (user$ | async).first_name }}  {{ (user$ | async).last_name }}</h5>
+        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus sequi ipsum dolores, ea explicabo repellat ratione, tempore voluptatibus quae numquam dicta? Dolorem fugiat, dolor, modi necessitatibus repudiandae officia excepturi natus, sit nihil nam tempore dolores!</p>
+        <button class="btn btn-primary">{{ (user$ | async).email }}</button>
+      </div>
+      <div class="card-footer text-muted"> </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<ng-template #errorTemplate>
+  <div class="alert alert-success" role="alert">
+    <h4 class="alert-heading"> <fa-icon [icon]="faTriangleExclamation"></fa-icon> {{ (error$ | async).name }}</h4>
+    <p> {{ (error$ | async).message }} </p>
+    <hr>
+    <p class="mb-0">{{ (error$ | async).url }}</p>
+  </div>
+</ng-template>

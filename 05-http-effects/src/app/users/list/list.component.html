@@ -1,0 +1,31 @@
+<div class="d-flex justify-content-center" *ngIf="(loading$ | async) && !(error$ | async)">
+  <div class="spinner-border" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</div>
+
+<div class="row row-cols-1 row-cols-md-3 g-4" *ngIf="!(loading$ | async) && !(error$ | async)">
+
+  <div class="col" *ngFor="let user of ( userList$ | async )">
+
+    <div class="card">
+      <img [src]="user.avatar" class="card-img-top" alt="User Avatar">
+
+      <div class="card-body">
+        <h5 class="card-title"> {{ user.first_name }}  {{ user.last_name }} </h5>
+        <p class="card-text">Lorem ipsum dolor sit amet.</p>
+        <p class="card-text"><small class="text-muted"> <a class="link-dark" [routerLink]="'/user/' + user.id">#{{ user.id }}</a> - {{ user.email }} </small></p>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<div class="alert alert-success" role="alert" *ngIf="(error$ | async)">
+  <h4 class="alert-heading"> <fa-icon [icon]="faTriangleExclamation"></fa-icon> {{ (error$ | async).name }}</h4>
+  <p> {{ (error$ | async).message }} </p>
+  <hr>
+  <p class="mb-0">{{ (error$ | async).url }}</p>
+</div>
