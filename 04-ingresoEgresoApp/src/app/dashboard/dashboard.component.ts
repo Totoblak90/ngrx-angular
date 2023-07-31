@@ -3,11 +3,11 @@ import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { IngresoEgresoService } from '../services/ingreso-egreso.service';
 import { AuthService } from '../services/auth.service';
 import { Usuario } from '../models/user.model';
-import { AppState } from '../app.reducer';
 import { Store } from '@ngrx/store';
 import { setUser } from '../auth/auth.actions';
 import { setItems, unsetItems } from '../ingreso-egreso/ingreso-egreso.actions';
 import { Subject, takeUntil } from 'rxjs';
+import { AppStateWithIngreso } from '../ingreso-egreso/ingreso-egreso.reducer';
 
 @Component({
   selector: 'app-dashboard',
@@ -18,7 +18,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   private ingresoEgresoService = inject(IngresoEgresoService)
   private authService = inject(AuthService)
-  private store = inject(Store<AppState>)
+  private store = inject(Store<AppStateWithIngreso>)
 
   private _destroy$ = new Subject<boolean>();
 

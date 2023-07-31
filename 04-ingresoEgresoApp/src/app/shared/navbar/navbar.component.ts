@@ -10,8 +10,6 @@ export class NavbarComponent {
 
   private authService = inject(AuthService);
 
-  get user() {
-    return this.authService.user;
-  }
+  get user() { return this.authService.user; }
 
 }

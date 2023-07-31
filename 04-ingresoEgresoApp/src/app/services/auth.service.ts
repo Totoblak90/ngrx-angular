@@ -127,7 +127,7 @@ export class AuthService {
       this.fireLoading();
       await this.auth.signOut();
       Swal.close();
-      this.router.navigate(['/login']);
+      this.router.navigate(['/auth/login']);
 
     } catch (error: any) {
       console.log(error)

@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { AppState } from 'src/app/app.reducer';
-import { ChartData, ChartEvent } from 'chart.js';
+import { ChartData } from 'chart.js';
+import { AppStateWithIngreso } from '../ingreso-egreso.reducer';
 
 @Component({
   selector: 'app-estadistica',
@@ -15,7 +15,7 @@ export class EstadisticaComponent implements OnInit {
   cantidadIngresos: number = 0;
   cantidadEgresos: number = 0;
 
-  private store = inject(Store<AppState>);
+  private store = inject(Store<AppStateWithIngreso>);
 
   ngOnInit(): void {
     this.store.select('ingresoEgreso').subscribe(({ items }) => {

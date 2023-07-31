@@ -3,9 +3,9 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { IngresoEgresoService } from '../services/ingreso-egreso.service';
 import { IngresoEgreso } from '../models/ingreso-egreso.model';
 import { Store } from '@ngrx/store';
-import { AppState } from '../app.reducer';
 import { isLoading, stopLoading } from '../shared/ui.actions';
 import { map } from 'rxjs';
+import { AppStateWithIngreso } from './ingreso-egreso.reducer';
 
 @Component({
   selector: 'app-ingreso-egreso',
@@ -15,7 +15,7 @@ import { map } from 'rxjs';
 export class IngresoEgresoComponent {
   private fb = inject(FormBuilder);
   private ingresoEgresoService = inject(IngresoEgresoService);
-  private store = inject(Store<AppState>);
+  private store = inject(Store<AppStateWithIngreso>);
 
   type: 'ingreso' | 'egreso' = 'ingreso';
 

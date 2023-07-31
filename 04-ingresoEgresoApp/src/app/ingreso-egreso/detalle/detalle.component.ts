@@ -1,10 +1,10 @@
 import { Component, inject } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { map } from 'rxjs';
-import { AppState } from 'src/app/app.reducer';
-import { deleteItem } from '../ingreso-egreso.actions';
+
 import { IngresoEgresoService } from 'src/app/services/ingreso-egreso.service';
 import { IngresoEgreso } from 'src/app/models/ingreso-egreso.model';
+import { AppStateWithIngreso } from '../ingreso-egreso.reducer';
 
 @Component({
   selector: 'app-detalle',
@@ -13,7 +13,7 @@ import { IngresoEgreso } from 'src/app/models/ingreso-egreso.model';
 })
 export class DetalleComponent {
 
-  private store = inject(Store<AppState>);
+  private store = inject(Store<AppStateWithIngreso>);
   private ingresoEgresoService = inject(IngresoEgresoService)
 
   ingresosEgresos$ = this.store.select('ingresoEgreso').pipe(map(({ items }) => items));
